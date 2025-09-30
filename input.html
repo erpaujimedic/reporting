@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Data MCU - Cabang</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Input Data MCU - Cabang</h1>
+        
+        <form id="mcuForm">
+            <div class="form-group">
+                <label for="cabang">Nama Cabang:</label>
+                <input type="text" id="cabang" name="cabang" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="tanggal">Tanggal MCU:</label>
+                <input type="date" id="tanggal" name="tanggal" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="jumlahPeserta">Jumlah Peserta:</label>
+                <input type="number" id="jumlahPeserta" name="jumlahPeserta" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="keterangan">Keterangan/Kendala:</label>
+                <textarea id="keterangan" name="keterangan" rows="4"></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="status">Status MCU:</label>
+                <select id="status" name="status" required>
+                    <option value="">Pilih Status</option>
+                    <option value="Selesai">Selesai</option>
+                    <option value="Berjalan">Masih Berjalan</option>
+                    <option value="Ditunda">Ditunda</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn">Submit Data</button>
+        </form>
+        
+        <div id="message" class="message"></div>
+        
+        <div class="nav">
+            <a href="index.html" class="btn secondary">Kembali ke Home</a>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
