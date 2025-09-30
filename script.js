@@ -1,5 +1,5 @@
 // Konfigurasi Google Sheets
-const SCRIPT_URL = 'URL_APPS_SCRIPT_ANDA'; // Ganti dengan URL Apps Script nanti
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxahOZh7J91LhurAX5XBg5O6c8pwLVXgh4FBABvGwuu5NHFtZVp0XmNbzEK-LpGftCbSg/exec'; // Ganti dengan URL Apps Script nanti
 
 document.getElementById('mcuForm').addEventListener('submit', function(e) {
     e.preventDefault();
