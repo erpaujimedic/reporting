@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Report MCU</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Laporan MCU Onsite</h1>
+        <button onclick="loadData()" class="btn">Refresh Data</button>
+        <div id="reportData"></div>
+        <div class="nav">
+            <a href="index.html" class="btn secondary">Kembali ke Home</a>
+        </div>
+    </div>
+
+    <script>
+        const SCRIPT_URL = 'https://script.google.com/macros/s/XXXXXXXXXX/exec';
+        
+        async function loadData() {
+            try {
+                document.getElementById('reportData').innerHTML = '<p>Loading data...</p>';
+                
+                const response = await fetch(SCRIPT_URL);
+                const data = await response.json();
+                
+                if (data && data.length > 0) {
+                    let html = '<table><thead><tr>';
+                    // Header
+                    data[0].forEach(header => {
+                        html += `<th>${header}</th>`;
+                    });
+                    html += '</tr></thead><tbody>';
+                    
+                    // Data rows (skip header jika ada)
+                    const startRow = data.length > 1 ? 1 : 0;
+                    for (let i = startRow; i < data.length; i++) {
+                        html += '<tr>';
+                        data[i].forEach(cell => {
+                            html += `<td>${cell}</td>`;
+                        });
+                        html += '</tr>';
+                    }
+                    html += '</tbody></table>';
+                    
+                    document.getElementById('reportData').innerHTML = html;
+                } else {
+                    document.getElementById('reportData').innerHTML = '<p>Belum ada data</p>';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('reportData').innerHTML = '<p class="message error">Error loading data: ' + error.message + '</p>';
+            }
+        }
+        
+        // Load data saat halaman dibuka
+        loadData();
+    </script>
+</body>
+</html>
